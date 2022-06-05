@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Validar Cedula</title>
+  </head>
+  <body style = "background-color:lightgray">
+
+<h1>Algoritmo del modulo 10 para validar si la cedula son correcta.</h1>
+   <center> <img width = "500px" src="https://i.ytimg.com/vi/q_qiutPE7MI/maxresdefault.jpg"></br></center>
+  <hr>
+  <h2>Ingrese la Cedula sin guiones para ser validada.</h2>
+
+    <input type="text" id="ced">
+    <button type="button" name="button" onclick="valida_cedula()">Validar</button>
+    <div id="salida"></div>
+    
+    <script type="text/javascript">
+      
+        function valida_cedula() {
+              let numero_cedula = document.getElementById("ced").value;  
+              var c = numero_cedula.replace(/-/g,'');  
+              var cedula = c.substr(0, c.length - 1);  
+              var verificador = c.substr(c.length - 1, 1);  
+              var suma = 0;  
+            var cedulaValida = 0;
+              if(ced.length < 11) { return false; }  
+              for (i=0; i < cedula.length; i++) {  
+                  mod = "";  
+                  if((i % 2) == 0){mod = 1} else {mod = 2}  
+                  res = cedula.substr(i,1) * mod;  
+                  if (res > 9) {  
+                        res = res.toString();  
+                        uno = res.substr(0,1);  
+                        dos = res.substr(1,1);  
+                        res = eval(uno) + eval(dos);  
+                  }  
+                  suma += eval(res);  
+              }  
+              el_numero = (10 - (suma % 10)) % 10;  
+              if (el_numero == verificador && cedula.substr(0,3) != "000") {  
+                cedulaValida = true;
+              }  
+              else   {  
+              cedulaValida = false;
+              }  
+
+              if (cedulaValida)
+                document.getElementById("salida").innerHTML = ("Cedula Valida");
+              else
+                document.getElementById("salida").innerHTML = ("Cedula Invalida");
+	}
+
+      
+    </script>
+<hr>
+<br>
+<h1>Metodo utilizado "Algoritmo de Luhn"</h1>
+<p style="font-size:130%;"> El algoritmo de Luhn o fórmula de Luhn, también conocida como "algoritmo de módulo 10", es una fórmula de suma de verificación, utilizada para validar una diversidad de números de identificación; 
+  como números de tarjetas de crédito, números IMEI, etc. Su idea se convirtió en la base de uno de los algoritmos más importantes de nuestra era, la función resumen/hash como la conocemos hoy.</p>
+  </body>
+</html>

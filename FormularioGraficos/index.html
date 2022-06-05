@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<title>Formulario para graficos</title>
+		<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	    <link rel="stylesheet" type="text/css" href="estilo.css">
+	</head>
+	<body>
+	    <form id="form-param">
+	    	<div class="container">
+				<header><h1>Formulario para generar graficos</h1></header>
+				<br/>
+				<h3>Nota: Favor llenar todos los campos del formulario con datos para generar una grafica.</h>
+				<br/>
+				<br/>
+	    	    <div>
+	    	        <input type="text" class="parametro" placeholder="Dato"><input type="number" class="valor" placeholder="valor">
+	            </div>
+	    	    <div>
+	    	        <input type="text" class="parametro" placeholder="Dato"><input type="number" class="valor" placeholder="valor">
+	            </div>
+				<div>
+	    	        <input type="text" class="parametro" placeholder="Dato"><input type="number" class="valor" placeholder="valor">
+	            </div>
+				<div>
+	    	        <input type="text" class="parametro" placeholder="Dato"><input type="number" class="valor" placeholder="valor">
+	            </div><div>
+	    	        <input type="text" class="parametro" placeholder="Dato"><input type="number" class="valor" placeholder="valor">
+	            </div>
+	    	</div>
+	    	<div class="buttons">
+	    		<button type="button" class="addParam">Agregar campos</button>
+	    		<button type="button" class="showResults">Generar Grafico</button>
+	    	</div>
+	    </form>
+	    <div id="grafico"></div>
+	    <script src="script.js"></script>
+	</body>
+	</html>

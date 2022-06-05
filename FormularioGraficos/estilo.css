@@ -1,0 +1,61 @@
+* {
+		padding: 0;
+		margin: 0;
+		font-family: century gothic;
+	}
+	
+
+	body {
+		background-color:lightgray;
+	}
+
+	header{
+		background: linear-gradient(
+		90deg, rgb(19, 11, 131) 0%, 
+		rgb(219, 217, 224) 35%, 
+		rgb(27, 58, 160) 100%);
+		height: 150px;
+		
+	}
+	header>h1{
+		padding: 30px;
+		text-align: center;
+		font-size: 3em;
+	}
+	
+
+	#form-param {
+		padding: 20px;
+		display: flex;
+	}
+	
+	#form-param .container {
+	    flex: 2;
+	}
+	#form-param .buttons {
+		flex: 1;
+	}
+
+
+	input {
+		padding: 9px;
+		margin: 6px;
+		width: 45%
+	}
+	
+
+	button{
+		border: none;
+		padding: 15px;
+		display: block;
+		margin: 6px
+	}
+	
+
+	button:first-child {
+		background-color:rgb(27, 58, 160);
+		color: #fff
+	}
+
+	
+	

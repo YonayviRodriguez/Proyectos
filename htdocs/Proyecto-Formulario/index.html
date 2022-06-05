@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta Charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" Content="IE-edged">
+    <title>Formulario de Persona</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <form id="myForm" action="#" autocomplete="off" class="activo">
+
+        <h1 align=center>Datos del Formularios</h1>
+
+        <div style="background-color: #e4eef9; border: 1px solid #007bff; padding: 10px; margin-bottom: 10px; border-radius: 8px ">
+            <b style="color:#2f2f2f">Nota: </b>Todos los campos son obligatorios.
+        </div>
+
+        <section id="datos-personales" class="activo">
+            <h2>Datos Personales</h2>
+            <div class="fila-50">
+                <label class="label">Nombre</label>
+                <input type="text" id="Nombre" name="Nombre">
+            </div>
+            <div class="fila-50">
+                <label class="label">Apellido</label>
+                <input type="text" id="Apellido" name="Apellido">
+            </div>
+            <div class="fila-50">
+                <label class="label">Edad</label>
+                <input type="number" id="Edad" name="Edad">
+            </div>
+            <div class="fila-50">
+                <label for="Sexo">Eliga su Sexo:</label>
+                <select id="Sexo" name="Sexo">
+                    <option value=""></option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                    <option value="Otros">Otro</option>
+                </select>
+            </div>
+            <div class="fila-100">
+                <label class="label">Dirección</label>
+                <input type="text" id="Direccion" name="Direccion">
+            </div>
+            <div class="fila-100">
+                <label class="label">Ciudad</label>
+                <input type="text" id="Ciudad" name="Ciudad">
+            </div>
+            <div class="fila-50">
+                <label class="label">Teléfono</label>
+                <input type="text" id="Telefono" name="Telefono">
+            </div>
+            <div class="fila-50">
+                <label class="label">Celular</label>
+                <input type="text" id="Celular" name="Celular">
+            </div>
+            <div class="fila-50">
+                <label class="label">Cédula</label>
+                <input type="text" id="Cedula" name="Cedula">
+            </div>
+            <div class="fila-50">
+                <label class="label">Correo Electrónico</label>
+                <input type="text" id="CorreoElectronico" name="CorreoElectronico">
+            </div>
+            <div style="display: inline-block; width: 100%; margin: 15px 0; text-align: center ">
+                <button type="button" onclick="Guardar_Datos_Personales()">Siguiente</button>
+            </div>
+        </section>
+
+        <section id="familiares" class="inactivo">
+            <h2>Familiares</h2>
+            <div class="fila-100">
+                <label class="label">Nombre</label>
+                <input type="text" id="FamiliarNombre" name="FamiliarNombre">
+            </div>
+            <div class="fila-100">
+                <label class="label">Parentezco</label>
+                <input type="text" id="FamiliarParentezco" name="FamiliarParentezco">
+            </div>
+            <div class="fila-50">
+                <label class="label">Edad</label>
+                <input type="number" id="FamiliarEdad" name="FamiliarEdad">
+            </div>
+            <div class="fila-100">
+                <label>Comentario</label><br>
+                <textarea id="FamiliarMensaje" name="FamiliarMensaje" rows="3"></textarea>
+            </div>
+
+            <div style="display: inline-block; width: 100%; margin: 15px 0; text-align: center ">
+                <button type="button" onclick="Agregar_Familiar()">Guardar</button>
+                <button type="button" onclick="VerAnterior()">Anterior</button>
+                <button type="button" onclick="VerSiguiente()">Siguiente</button>
+            </div>
+
+            <table id="tbl-familiares">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Parentezco</th>
+                        <th>Edad</th>
+                        <th>Comentario</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+        <section id="condiciones" class="inactivo">
+            <h2>Condiciones Pre-Existentes de Salud</h2>
+            <div class="fila-100">
+                <label class="label">Nombre</label>
+                <input type="text" id="EnfermedadNombre" name="EnfermedadNombre">
+            </div>
+            <div class="fila-50">
+                <label class="label">Tiempo con la Enfermedad en años</label>
+                <input type="number" id="EnfermedadTiempo" name="EnfermedadTiempo">
+            </div>
+            <div class="fila-100">
+                <label class="label">Comentario</label>
+                <textarea name="EnfermedadMensaje" id="EnfermedadMensaje" rows="3"></textarea>
+            </div>
+            <div style="display: inline-block; width: 100%; margin: 15px 0; text-align: center ">
+                <button type="button" onclick="Agregar_Condiciones()">Guardar</button>
+                <button type="button" onclick="VerAnterior()">Anterior</button>
+                <button type="button" onclick="VerSiguiente()">Siguiente</button>
+            </div>
+
+            <table id="tbl-condiciones">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Tiempo</th>
+                        <th>Comentario</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+        <section id="internamientos" class="inactivo">
+            <h2>Internamientos Realizados:</h2>
+            <div class="fila-50">
+                <label class="label">Fecha de Ingreso</label>
+                <input type="date" id="InternamientoFechaIngreso" name="InternamientoFechaIngreso">
+            </div>
+            <div class="fila-50">
+                <label class="label">Fecha de Salida</label>
+                <input type="date" id="InternamientoFechaSalida" name="InternamientoFechaSalida">
+            </div>
+            <div class="fila-100">
+                <label class="label">Clinica o hospital</label>
+                <input type="text" id="InternamientoClinica" name="InternamientoClinica">
+            </div>
+            <div class="fila-100">
+                <label class="label">Comentario</label>
+                <textarea name="InternamientoMensaje" id="InternamientoMensaje" rows="10" cols="30"></textarea>
+            </div>
+            <div style="display: inline-block; width: 100%; margin: 15px 0; text-align: center">
+                <button type="button" onclick="Agregar_Internamientos()">Guardar</button>
+                <button type="button" onclick="VerAnterior()">Anterior</button>
+                <button type="button" onclick="VerDatos()">Enviar</button>
+            </div>
+
+            <table id="tbl-internamientos">
+                <thead>
+                    <tr>
+                        <th>Fecha de Ingreso</th>
+                        <th>Fecha de Salida</th>
+                        <th>Clinica o hospital</th>
+                        <th>Comentario</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+    </form>
+
+    <div id="panel-datos" class="inactivo" style="max-width: 600px; padding:15px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px">
+        <section id="datos-personales">
+            <h2>Datos Personales</h2>
+            <hr />
+
+            <div class="fila-50">
+                <label class="label-datos">Nombre</label>
+                <span id="PersonaNombre"></span>
+            </div>
+            <div class="fila-50">
+                <label class="label-datos">Apellido</label>
+                <span id="PersonaApellido"></span>
+            </div>
+            <div class="fila-50">
+                <label class="label-datos">Edad</label>
+                <span id="PersonaEdad"></span>
+            </div>
+            <div class="fila-50">
+                <label class="label-datos">Sexo</label>
+                <span id="PersonaSexo"></span>
+            </div>
+            <div class="fila-100">
+                <label class="label-datos">Dirección</label>
+                <span id="PersonaDireccion"></span>
+            </div>
+            <div class="fila-100">
+                <label class="label-datos">Ciudad</label>
+                <span id="PersonaCiudad"></span>
+            </div>
+            <div class="fila-50">
+                <label class="label-datos">Teléfono</label>
+                <span id="PersonaTelefono"></span>
+            </div>
+            <div class="fila-50">
+                <label class="label-datos">Celular</label>
+                <span id="PersonaCelular"></span>
+            </div>
+            <div class="fila-50">
+                <label class="label-datos">Cédula</label>
+                <span id="PersonaCedula"></span>
+            </div>
+            <div class="fila-50">
+                <label class="label-datos">Correo Electrónico</label>
+                <span id="PersonaCorreoElectronico"></span>
+            </div>
+        </section>
+
+        <section id="familiares">
+            <h2>Familiares</h2>
+
+            <table id="tbl-datos-familiares">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Parentezco</th>
+                        <th>Edad</th>
+                        <th>Comentario</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+        <section id="condiciones">
+            <h2>Condiciones Pre-Existentes de Salud</h2>
+
+            <table id="tbl-datos-condiciones">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Tiempo</th>
+                        <th>Comentario</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+        <section id="internamientos">
+            <h2>Internamientos Realizados:</h2>
+
+            <table id="tbl-datos-internamientos">
+                <thead>
+                    <tr>
+                        <th>Fecha de Ingreso</th>
+                        <th>Fecha de Salida</th>
+                        <th>Clinica o hospital</th>
+                        <th>Comentario</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+        <div style="display: inline-block; width: 100%; margin: 15px 0; text-align: center">
+            <button type="button" onclick="VerFormulario()">Volver al Formulario</button>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta Charset = "UTF-8">
+  <meta http-equiv="X-UA-Compatible" Content = "IE-edged">
+    <title>Formulario de datos</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <form id="myForm" action="datos.php" method="post" autocomplete = "off">
+      <h1 align = center>Datos del Formularios</h1>
+
+      <div style="text-align:center;">
+        <span class="step" id = "step-1">1</span>
+        <span class="step" id = "step-2">2</span>
+        <span class="step" id = "step-3">3</span>
+        <span class="step" id = "step-4">4</span>
+      </div>
+
+      <div class="tab" id = "tab-1">
+        <h2>Datos personales:</h2>
+        <input type = "text" placeholder="Nombre" id="Nombre" name="Nombre">
+        <input type = "text" placeholder="Apellido" id="Apellido" name="Apellido">
+        <input type = "text" placeholder="Edad" id="Edad" name="Edad">
+        <label for="Sexo">Elige su Sexo:</label>
+        <select id="Sexo" id="Sexo" name="Sexo">
+          <option value="Masculino">Masculino</option>
+          <option value="Femenino">Femenino</option>
+          <option value="Otros">Otros</option>
+        </select>
+        <input type = "text" placeholder="Direccion" id="Direccion" name="Direccion">
+        <input type = "text" placeholder="Ciudad" id="Ciudad" name="Ciudad">
+        <input type = "tel" placeholder="Telefono" id="Telefono" name="Telefono">
+        <input type = "tel" placeholder="Celular" id="Celular" name="Celular">
+        <input type = "text" placeholder="Cedula" id= "Cedula" name="Cedula">
+        <input type = "text" placeholder="Correo Electronico" id="Correo" name="Correo">
+        
+        <div class="index-btn-wrapper">
+          <div class="index-btn" onclick="run(1, 2);">Siguiente</div>
+        </div>
+      </div>
+
+      <div class="tab" id = "tab-2">
+        <h2>Familiares:</h2>
+        <input type = "text" placeholder="Nombre" id="NombreFamiliar" name="NombreFamiliar">
+        <input type = "text" placeholder="Parentezco" id="Parentezco" name="Parentezco">
+        <input type = "text" placeholder="Edad" id="Edadfamiliar" name="Edadfamiliar">
+         <label>Detalle</label><br>
+        <textarea name="message1" id="message" rows="10" cols="30">
+         </textarea>
+
+        <div class="index-btn-wrapper">
+          <div class="index-btn" onclick="run(2, 1);">Atras</div>
+          <div class="index-btn" onclick="run(2, 3);">Siguiente</div>
+        </div>
+      </div>
+
+      <div class="tab" id = "tab-3">
+        <h2>Condiciones Pre-Existentes de Salud:</h2>
+        <input type = "text" placeholder="Enfermedad" id="Enfermedad" name="Enfermedad">
+        <input type = "text" placeholder="Tiempo con la Enfermedad 5 años" id="Tiempo" name="Tiempo">
+         <label>Detalle</label><br>
+        <textarea name="message2" id="message" rows="10" cols="30">
+         </textarea>
+        
+        <div class="index-btn-wrapper">
+          <div class="index-btn" onclick="run(3, 2);">Atras</div>
+          <div class="index-btn" onclick="run(3, 4);">Siguiente</div>
+        </div>
+      </div>
+
+      <div class="tab" id = "tab-4">
+        <h2>Internamientos Realizados:</h2>
+        <label>Fecha de ingreso:</label>
+        <input type = "date" placeholder="Fecha de ingreso" id="FechaIng" name="FechaIng">
+        <label>Fecha de salida:</label>
+        <input type = "date" placeholder="Fecha de salida" id="fechaSal" name="fechaSal">
+        <input type = "text" placeholder="Clinica o hospital" name="centroMedico">
+        <label>Detalle</label><br>
+        <textarea name="message3" id="message3" rows="10" cols="30">
+        </textarea>
+
+        <div class="index-btn-wrapper">
+          <div class="index-btn" onclick="run(4, 3);">Atras</div>
+          <div class="index-btn" onclick="run(4, 5);">Siguiente</div>
+        </div>
+      </div>
+
+      <div class="tab" id = "tab-5">
+        <div class="index-btn-wrapper">
+          <div class="index-btn" onclick="run(5, 4);">Atras</div>
+          <button class = "index-btn" type="submit" name="submit" style = "background: blue;">Enviar</button>
+        </div>
+      </div>
+    </form>
+
+    <script>
+      // Default tab
+      $(".tab").css("display", "none");
+      $("#tab-1").css("display", "block");
+
+      function run(hideTab, showTab){
+        if(hideTab < showTab){ // If not press previous button
+          // Validation if press next button
+          var currentTab = 0;
+          x = $('#tab-'+hideTab);
+          y = $(x).find("input")
+          for (i = 0; i < y.length; i++){
+            if (y[i].value == ""){
+              $(y[i]).css("background", "#ffdddd");
+              return false;
+            }
+          }
+        }
+
+        // Progress bar
+        for (i = 1; i < showTab; i++){
+          $("#step-"+i).css("opacity", "1");
+        }
+
+        // Switch tab
+        $("#tab-"+hideTab).css("display", "none");
+        $("#tab-"+showTab).css("display", "block");
+        $("input").css("background", "#fff");
+      } 
+
+  
+    </script>
+  </body>
+</html>
